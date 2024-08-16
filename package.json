@@ -1,0 +1,18 @@
+{
+  "name": "jscourse",
+  "version": "1.0.0",
+  "description": "node crash course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Salma Salem",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
