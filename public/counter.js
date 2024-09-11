@@ -8,11 +8,6 @@ const display = document.getElementById('display');
 const time = document.getElementById('time');
 
 
-require.config({
-    paths: {
-        'dependency': 'http://some.domain.dom/path/to/dependency'
-    }
-});
 const Client = require('pg').Client;
 const client = new Client({
     user: 'postgres',
@@ -21,9 +16,6 @@ const client = new Client({
     password: 'salma salem 123',
     port: 5432,
 });
-
-require(['dependency'], function (dependency) {});
-
 
 myForm.addEventListener('submit', onSubmit);
 
