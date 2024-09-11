@@ -7,6 +7,22 @@ const userList = document.querySelector('#users');
 const display = document.getElementById('display');
 const time = document.getElementById('time');
 
+const Client = require('pg').Client;
+const client = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'postgres',
+    password: 'salma salem 123',
+    port: 5432,
+});
+client.connect()
+    .then(() => console.log('Connected to Postgres SQL'))
+    .then(() => client.query('SELECT * FROM counter_storage'))
+    .then(results => console.table(results.rows))
+    .catch(e => console.log(e))
+    .finally(() => client.end());
+
+
 myForm.addEventListener('submit', onSubmit);
 
 function addToCounter() {
