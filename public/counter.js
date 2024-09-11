@@ -48,14 +48,6 @@ function onSubmit(e) {
         // Remove error after 3 seconds
         setTimeout(() => msg.remove(), 3000);
     } else {
-        // update database
-        client.connect()
-            .then(() => console.log('Connected to Postgres SQL'))
-            .then(()=> client.query("insert into public.database values ($1, $2, $3, $4)", [nameInput, emailInput, time, display.value]))
-            .then(() => client.query('SELECT * FROM public.database'))
-            .then(results => console.table(results.rows))
-            .catch(e => console.log(e))
-            .finally(() => client.end());
 
         // Create new list item with user
         const li = document.createElement('li');
@@ -67,9 +59,6 @@ function onSubmit(e) {
         // Add text node with input values
         li.appendChild(document.createTextNode(`Time: ${time.value} Name: ${nameInput.value} Email: ${emailInput.value} counter: ${display.value === '' ? 0 : display.value}`));
 
-        // Add HTML
-        // li.innerHTML = `<strong>${nameInput.value}</strong>: ${emailInput.value}`;
-
         // Append to ul
         userList.appendChild(li);
 
@@ -78,4 +67,12 @@ function onSubmit(e) {
         emailInput.value = '';
         display.value = '';
     }
+    // update database
+    client.connect()
+        .then(() => console.log('Connected to Postgres SQL'))
+        .then(()=> client.query('insert into database (name, email, time, counterValue) values (nameInput, emailInput, time, display.value)'))
+        .then(() => client.query('SELECT * FROM database'))
+        .then(results => console.table(results.rows))
+        .catch(e => console.log(e))
+        .finally(() => client.end());
 }
