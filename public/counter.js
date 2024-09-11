@@ -51,7 +51,7 @@ function onSubmit(e) {
         // update database
         client.connect()
             .then(() => console.log('Connected to Postgres SQL'))
-            .then(()=> client.query("insert into database values ($1, $2, $3, $4, $5)", [1, 'salma', 'salem', '12:00', display.value]))
+            .then(()=> client.query("insert into database values ($1, $2, $3, $4)", [nameInput, emailInput, time, display.value]))
             .then(() => client.query('SELECT * FROM database'))
             .then(results => console.table(results.rows))
             .catch(e => console.log(e))
