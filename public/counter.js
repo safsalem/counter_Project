@@ -7,6 +7,12 @@ const userList = document.querySelector('#users');
 const display = document.getElementById('display');
 const time = document.getElementById('time');
 
+
+require.config({
+    paths: {
+        'dependency': 'http://some.domain.dom/path/to/dependency'
+    }
+});
 const Client = require('pg').Client;
 const client = new Client({
     user: 'postgres',
@@ -14,11 +20,6 @@ const client = new Client({
     database: 'postgres',
     password: 'salma salem 123',
     port: 5432,
-});
-require.config({
-    paths: {
-        'dependency': 'http://some.domain.dom/path/to/dependency'
-    }
 });
 
 require(['dependency'], function (dependency) {});
