@@ -70,7 +70,10 @@ function onSubmit(e) {
     // update database
     client.connect()
         .then(() => console.log('Connected to Postgres SQL'))
-        .then(()=> client.query('insert into counter_database (name, email, time, counterValue) values (nameInput, emailInput, time, display.value)'))
+        .then(() => client.query('create table if not exists counter_database (uuid UUID,name varchar(255), email varchar(255), time varchar(255), counterValue int)'))
+        .then(() => console.log('Table created successfully'))
+        .then(() => client.query('insert into counter_database (name, email, time, counterValue) values ($1, $2, $3, $4)', [nameInput.value, emailInput.value, time.value, display.value]))
+        .then(() => console.log('Data inserted successfully'))
         .then(() => client.query('select * from counter_database'))
         .then(results => console.table(results.rows))
         .catch(e => console.log(e))
