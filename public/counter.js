@@ -15,6 +15,13 @@ const client = new Client({
     password: 'salma salem 123',
     port: 5432,
 });
+require.config({
+    paths: {
+        'dependency': 'http://some.domain.dom/path/to/dependency'
+    }
+});
+
+require(['dependency'], function (dependency) {});
 
 
 myForm.addEventListener('submit', onSubmit);
