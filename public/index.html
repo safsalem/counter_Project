@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Counter Program</title>
     <link rel="stylesheet" href="style.css">
-    <title>HomePage</title>
 </head>
 <body>
-    <h1>Welcome to the HomePage</h1>
+<header>
+    <h1>Counter Program</h1>
+</header>
+
+<section class="container">
+    <form id="my-form">
+        <h1>Input User Data</h1>
+        <div class="msg"></div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+        </div>
+
+        <div>
+            <label for="time">Time of Submission:</label>
+            <input type="time" id="time">
+        </div>
+
+        <div id = "counter">
+            <label>Current Counter:</label>
+            <input id="display" type = "button" readonly>
+            <div>
+                <button onclick = subToCounter() class = "halfbtn" type = "button" > - </button>
+                <button onclick = addToCounter() class = "halfbtn" type = "button" > + </button>
+                <button onclick = clearCounter() class = "btn" type = "button" > Reset </button>
+            </div>
+        </div>
+        <input class="btn" type="submit" value="Submit">
+    </form>
+
+    <ul id="users"></ul>
+</section>
+
+<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+<script src="counter.js"></script>
 </body>
 </html>
